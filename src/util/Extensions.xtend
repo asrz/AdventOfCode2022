@@ -36,4 +36,19 @@ class Extensions {
 		return subLists
 	}
 	
+	def static reSplit2(List<String> list, String regex) {
+		val Pattern pattern = Pattern.compile(regex)
+		val result = new ArrayList
+		result.add(new ArrayList)
+		list.fold(result) [nestedList, word | 
+			if (pattern.matcher(word).matches) {
+				nestedList.add(new ArrayList)
+			} else {
+				nestedList.last.add(word)
+			}
+			
+			return nestedList
+		]
+	} 
+	
 }
