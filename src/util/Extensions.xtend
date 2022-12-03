@@ -49,6 +49,23 @@ class Extensions {
 			
 			return nestedList
 		]
-	} 
+	}
+	
+	def static <T> List<List<T>> partition(List<T> list, int partitionSize) {
+		val List<List<T>> result = new ArrayList
+		
+		var int i = 0
+		var List<T> subList = new ArrayList
+		for (T element : list) {
+			subList.add(element)
+			i++
+			if (i % partitionSize == 0) {
+				result.add(subList)
+				subList = new ArrayList<T>
+			}
+		}
+		
+		return result
+	}
 	
 }
