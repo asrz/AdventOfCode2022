@@ -4,6 +4,7 @@ import java.util.ArrayList
 
 import java.util.List
 import java.util.regex.Pattern
+import java.util.regex.Matcher
 
 class Extensions {
 	
@@ -66,6 +67,12 @@ class Extensions {
 		}
 		
 		return result
+	}
+	
+	def static List<String> groups(Matcher matcher) {
+		if (matcher.matches) {
+			return (1 .. matcher.groupCount).map[ i | matcher.group(i) ].toList
+		}
 	}
 	
 }
