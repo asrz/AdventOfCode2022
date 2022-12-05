@@ -75,4 +75,14 @@ class Extensions {
 		}
 	}
 	
+	def static List<String> partition(String input, int partitionSize) {
+		val List<String> result = new ArrayList
+		
+		for(var i = 0; i < input.length; i += partitionSize) {
+			result.add(input.substring(i, i+partitionSize-1))
+		}
+		
+		return result
+	}
+	
 }
