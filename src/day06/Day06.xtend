@@ -6,29 +6,25 @@ import java.util.List
 import static extension util.Extensions.*
 
 class Day06 {
+	def static getMarker(String line, int length) {
+		for (i : length..line.length) {
+			if (line.substring(i-length, i).chars.distinct.count == length) {
+				return i
+			}
+		}
+	}
+	
 	def static part1(List<String> lines) {
 		val result = lines
-			.map[ line | 
-					for (i : 4..line.length) {
-						if (line.substring(i-4, i).chars.distinct.count == 4) {
-							return i
-						}
-					}
-				]
+			.map[ line | getMarker(line, 4) ]
 				
 		println(result)
 	}
 	
 	def static part2(List<String> lines) {
 		val result = lines
-			.map[ line | 
-					for (i : 14..line.length) {
-						if (line.substring(i-14, i).chars.distinct.count == 14) {
-							return i
-						}
-					}
-				]
-				
+			.map[ line | getMarker(line, 14) ]
+			 
 		println(result)
 	}
 	
