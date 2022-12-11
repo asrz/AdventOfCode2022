@@ -85,4 +85,21 @@ class Extensions {
 		return result
 	}
 	
+	def static String slice(String input, int beginIndex) {
+		return slice(input, beginIndex, input.length)
+	}
+	
+	def static String slice(String input, int beginIndex, int endIndex) {
+		var i = beginIndex
+		var j = endIndex
+		if (beginIndex < 0) {
+			i = beginIndex + input.length
+		}
+		if (endIndex < 0) {
+			j += input.length
+		}
+		
+		return input.substring(i, j)
+	}
+	
 }
